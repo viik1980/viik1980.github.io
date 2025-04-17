@@ -201,7 +201,6 @@
             chatContainer.appendChild(messageElement);
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
-
         // Открытие/закрытие чата
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
         const chatPopup = document.getElementById('chat-popup');
@@ -209,32 +208,25 @@
         const userInput = document.getElementById('user-input');
         const sendMessageBtn = document.getElementById('send-message-btn');
         const chatContainer = document.getElementById('chat-container');
-
         chatToggleBtn.addEventListener('click', () => {
             chatPopup.style.display = 'block';
         });
-
         closeChatBtn.addEventListener('click', () => {
             chatPopup.style.display = 'none';
         });
-
         // Инициализация клиента Cavvy.ai
         const cavvy = new Cavvy.Client({
             apiKey: 'cc-4baa8fa392253fbb600397a558428ca96c3ddB7cf4cbc530febe8748a6754e49', // Замените на ваш API-ключ
             model: 'gpt-3.5-turbo', // Модель, которую вы хотите использовать
         });
-
         // Отправка сообщения
         sendMessageBtn.addEventListener('click', async () => {
             const userMessage = userInput.value.trim();
             if (!userMessage) return;
-
             // Добавляем сообщение пользователя
             appendMessage(userMessage, 'user');
-
             // Очищаем поле ввода
             userInput.value = '';
-
             // Получаем ответ от Cavvy.ai
             try {
                 const response = await cavvy.chat([{
@@ -248,7 +240,6 @@
                 appendMessage('Произошла ошибка. Попробуйте снова.', 'bot');
             }
         });
-
         // Обработка нажатия Enter в поле ввода
         userInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
