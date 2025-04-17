@@ -1,0 +1,12 @@
+{
+  "name": "cavvy-webhook-server",
+  "version": "1.0.0",
+  "description": "Serverless function for Cavvy.ai chat integration",
+  "main": "api/chat.js",
+  "scripts": {
+    "start": "node api/chat.js"
+  },
+  "dependencies": {
+    "@cavvy/client": "^latest"
+  }
+}
