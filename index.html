@@ -214,42 +214,49 @@
         closeChatBtn.addEventListener('click', () => {
             chatPopup.style.display = 'none';
         });
-        // Инициализация клиента Cavvy.ai
-        const cavvy = new Cavvy.Client({
-            apiKey: 'cc-4baa8fa392253fbb600397a558428ca96c3ddB7cf4cbc530febe8748a6754e49', // Замените на ваш API-ключ
-            model: 'gpt-3.5-turbo', // Модель, которую вы хотите использовать
-        });
-        // Отправка сообщения
-        sendMessageBtn.addEventListener('click', async () => {
-            const userMessage = userInput.value.trim();
-            if (!userMessage) return;
-            // Добавляем сообщение пользователя
-            appendMessage(userMessage, 'user');
-            // Очищаем поле ввода
-            userInput.value = '';
-            // Получаем ответ от Cavvy.ai
-            try {
-                const response = await cavvy.chat([{
-                    role: 'user',
-                    content: userMessage,
-                }]);
-                if (response.choices && response.choices.length > 0) {
-                    const botMessage = response.choices[0].message.content;
-                    appendMessage(botMessage, 'bot');
-                } else {
-                    appendMessage('Произошла ошибка при получении ответа. Попробуйте снова.', 'bot');
+        // Проверка подключения SDK
+        if (typeof Cavvy === 'undefined') {
+            console.error('SDK Cavvy.ai не загружен');
+            appendMessage('Произошла ошибка подключения к боту. Попробуйте позже.', 'bot');
+        } else {
+            console.log('SDK Cavvy.ai загружен успешно');
+            // Инициализация клиента Cavvy.ai
+            const cavvy = new Cavvy.Client({
+                apiKey: 'cc-4baa8fa392253fbb600397a558428ca96c3ddB7cf4cbc530febe8748a6754e49', // Замените на ваш API-ключ
+                model: 'gpt-3.5-turbo', // Модель, которую вы хотите использовать
+            });
+            // Отправка сообщения
+            sendMessageBtn.addEventListener('click', async () => {
+                const userMessage = userInput.value.trim();
+                if (!userMessage) return;
+                // Добавляем сообщение пользователя
+                appendMessage(userMessage, 'user');
+                // Очищаем поле ввода
+                userInput.value = '';
+                // Получаем ответ от Cavvy.ai
+                try {
+                    const response = await cavvy.chat([{
+                        role: 'user',
+                        content: userMessage,
+                    }]);
+                    if (response.choices && response.choices.length > 0) {
+                        const botMessage = response.choices[0].message.content;
+                        appendMessage(botMessage, 'bot');
+                    } else {
+                        appendMessage('Произошла ошибка при получении ответа. Попробуйте снова.', 'bot');
+                    }
+                } catch (error) {
+                    console.error('Ошибка при получении ответа:', error);
+                    appendMessage('Произошла ошибка. Попробуйте снова.', 'bot');
                 }
-            } catch (error) {
-                console.error('Ошибка при получении ответа:', error);
-                appendMessage('Произошла ошибка. Попробуйте снова.', 'bot');
-            }
-        });
-        // Обработка нажатия Enter в поле ввода
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessageBtn.click();
-            }
-        });
+            });
+            // Обработка нажатия Enter в поле ввода
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessageBtn.click();
+                }
+            });
+        }
     </script>
 </body>
 </html>
