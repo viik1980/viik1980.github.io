@@ -70,24 +70,24 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            padding: 10px 20px;
+            padding: 10px 20px; /* Уменьшаем отступы для более компактного отображения на мобильных устройствах */
             background-color: #f39200;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 14px; /* Уменьшаем шрифт для мобильных устройств */
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
-            width: 200px;
-            max-width: 90%;
+            width: 200px; /* Фиксированная ширина может быть заменена на процентную */
+            max-width: 90%; /* Добавляем максимальную ширину в процентах */
         }
         @media (max-width: 600px) {
             #chat-toggle-btn {
-                font-size: 12px;
-                width: 90%;
-                right: 5%;
-                bottom: 15px;
+                font-size: 12px; /* Дополнительное уменьшение шрифта для очень маленьких экранов */
+                width: 90%; /* Ширина занимает 90% от родительского контейнера */
+                right: 5%; /* Отступ справа */
+                bottom: 15px; /* Отступ снизу */
             }
         }
         #chat-toggle-btn:hover {
@@ -239,7 +239,7 @@
 
             // Отправляем сообщение на сервер
             try {
-                const response = await fetch('https://your-project.vercel.app/api/chat', {
+                const response = await fetch('https://cavvy-webhook-server.vercel.app/api/chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
