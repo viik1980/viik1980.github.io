@@ -233,8 +233,12 @@
                     role: 'user',
                     content: userMessage,
                 }]);
-                const botMessage = response.choices[0].message.content;
-                appendMessage(botMessage, 'bot');
+                if (response.choices && response.choices.length > 0) {
+                    const botMessage = response.choices[0].message.content;
+                    appendMessage(botMessage, 'bot');
+                } else {
+                    appendMessage('Произошла ошибка при получении ответа. Попробуйте снова.', 'bot');
+                }
             } catch (error) {
                 console.error('Ошибка при получении ответа:', error);
                 appendMessage('Произошла ошибка. Попробуйте снова.', 'bot');
