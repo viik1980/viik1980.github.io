@@ -1,8 +1,13 @@
 const express = require('express');
-const fetch = require('node-fetch');
-
 const app = express();
-const port = process.env.PORT || 3000;
+
+app.post('/api/suvvy', (req, res) => {
+  res.status(200).send('OK');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
 
 // Middleware для парсинга JSON
 app.use(express.json());
