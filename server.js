@@ -11,6 +11,9 @@ app.use(cors());
 // Парсер JSON
 app.use(bodyParser.json());
 
+// Обслуживание статических файлов
+app.use(express.static(__dirname));
+
 // Эндпоинт для вебхука
 app.post('/api/suvvy', (req, res) => {
   console.log('Received webhook:', req.body);
