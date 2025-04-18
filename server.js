@@ -1,5 +1,8 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
+app.use(cors());
 
 app.post('/api/suvvy', (req, res) => {
   res.status(200).send('OK');
