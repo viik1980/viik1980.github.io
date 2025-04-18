@@ -13,7 +13,7 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 
 // Замените YOUR_SUVVY_API_KEY на ваш реальный API ключ Suvvy.ai
-const suvvyApiKey = process.env.SUVVY_API_KEY;
+const suvvyApiKey = process.env.cc-d08e2f0e7d024bac9a760c72eefac15740a7b1c8d952e5436ebf52aafbb1339e;
 
 // Эндпоинт для перенаправления запросов к Suvvy.ai
 app.post('/api/suvvy', async (req, res) => {
