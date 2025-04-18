@@ -10,7 +10,7 @@ const suvvyApiKey = 'cc-d08e2f0e7d024bac9a760c72eefac15740a7b1c8d952e5436ebf52aa
 // Эндпоинт для перенаправления запросов к Suvvy.ai
 app.post('/api/suvvy', async (req, res) => {
   try {
-    const response = await fetch('https://api.suvvy.ai/your-endpoint', {
+    const response = await fetch('https://api.cavvy.ai/v1/chat', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${suvvyApiKey}`,
