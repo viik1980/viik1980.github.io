@@ -209,7 +209,6 @@
             chatContainer.appendChild(messageElement);
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
-
         // Открытие/закрытие чата
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
         const chatPopup = document.getElementById('chat-popup');
@@ -217,26 +216,20 @@
         const userInput = document.getElementById('user-input');
         const sendMessageBtn = document.getElementById('send-message-btn');
         const chatContainer = document.getElementById('chat-container');
-
         chatToggleBtn.addEventListener('click', () => {
             chatPopup.style.display = 'block';
         });
-
         closeChatBtn.addEventListener('click', () => {
             chatPopup.style.display = 'none';
         });
-
         // Отправка сообщения
         sendMessageBtn.addEventListener('click', async () => {
             const userMessage = userInput.value.trim();
             if (!userMessage) return;
-
             // Добавляем сообщение пользователя
             appendMessage(userMessage, 'user');
-
             // Очищаем поле ввода
             userInput.value = '';
-
             // Отправляем сообщение на сервер
             try {
                 const response = await fetch('https://cavvy-webhook-server.vercel.app/api/chat', {
@@ -246,11 +239,9 @@
                     },
                     body: JSON.stringify({ message: userMessage }),
                 });
-
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-
                 const data = await response.json();
                 if (data.message) {
                     appendMessage(data.message, 'bot');
@@ -262,7 +253,6 @@
                 appendMessage('Произошла ошибка. Попробуйте снова.', 'bot');
             }
         });
-
         // Обработка нажатия Enter в поле ввода
         userInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
