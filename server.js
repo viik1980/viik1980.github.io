@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 
 app.post('/api/suvvy', (req, res) => {
-  res.status(200).send('OK');
+  res.status(200).json({ message: 'Webhook received' });
 });
 
 app.listen(3000, () => {
