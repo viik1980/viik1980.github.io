@@ -11,8 +11,8 @@ app.use(cors());
 // Парсер JSON
 app.use(bodyParser.json());
 
-// Обслуживание статических файлов
-app.use(express.static(__dirname));
+// Обслуживание статических файлов из папки public
+app.use(express.static(__dirname + '/public'));
 
 // Эндпоинт для вебхука
 app.post('/api/suvvy', (req, res) => {
