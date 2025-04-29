@@ -232,7 +232,7 @@
             userInput.value = '';
             // Отправляем сообщение на сервер
             try {
-                const response = await fetch('https://viik1980-github-io-xi-vercel.app/api/suvvy', {
+                const response = await fetch('https://cavvy-webhook-server-1fd2.vercel.app/api/chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -246,7 +246,7 @@
                 if (data.message) {
                     appendMessage(data.message, 'bot');
                 } else {
-                    appendMessage('Произошла ошибка при получении ответа. Попробуйте снова.', 'bot');
+                    appendMessage('Я ешё учусь, буду доступен позже.', 'bot');
                 }
             } catch (error) {
                 console.error('Ошибка при получении ответа:', error);
