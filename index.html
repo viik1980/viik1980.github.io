@@ -67,26 +67,6 @@
             margin-top: 20px;
             border-top: 5px solid #f39200;
         }
-
-        /* Фиксированная кнопка Telegram */
-        #telegram-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 12px 20px;
-            background-color: #009688;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: transform 0.2s ease;
-        }
-        #telegram-btn:hover {
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body>
@@ -132,12 +112,9 @@
             <br><br>
 
             <!-- Умная ссылка на Telegram -->
-            <a href="#" onclick="openTelegram()" target="_blank" style="color: #00afff; text-decoration: none;">💬 Наш Ai-ассистент в Telegram 24/7</a>
+            <a href="#" onclick="openTelegram()" target="_blank" style="color: #00afff; text-decoration: none;">💬 Написать в Telegram</a>
         </div>
     </footer>
-
-    <!-- Фиксированная кнопка Telegram -->
-    <button id="telegram-btn" onclick="openTelegram()">💬 Telegram</button>
 
     <script>
         // Проверка устройства
