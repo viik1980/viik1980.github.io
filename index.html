@@ -77,14 +77,21 @@
             margin: 5px 0;
             color: #00afff; /* Единый цвет для обеих ссылок */
             text-decoration: none;
+            padding: 10px 20px;
+            background-color: #222;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
         .social a:hover {
-            text-decoration: underline;
+            background-color: #333;
+            transform: translateY(-2px);
         }
 
         /* Стили для иконок */
         .social a i {
             margin-right: 5px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -132,7 +139,7 @@
 
             <!-- Умная ссылка на Telegram -->
             <a href="#" onclick="openSocial('tg://resolve?domain=ArtOptyma_bot', 'https://t.me/ArtOptyma_bot ')">
-                <i class="fab fa-telegram-plane"></i> Наш Ai-ассистент в Telegram 24/7
+                <i class="fab fa-telegram-plane"></i> 💬 Наш Ai-ассистент в Telegram 24/7
             </a>
         </div>
     </footer>
