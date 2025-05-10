@@ -99,14 +99,37 @@
             <p>🔥 <b>Авто любят чистоту и красоту — а мы это гарантируем!</b> Давайте сделаем ваш автомобиль идеальным вместе! 🚗✨</p>
         </div>
     </div>
- <footer>
+<footer>
     Контакты: +375 44 55 22 770 | График работы: пн-пт с 9:00-18:00 | г. Солигорск
     <div class="social">
-        <a href="https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr " target="_blank">Ещё больше о нас в Instagram</a>
+        <!-- Умная ссылка на Instagram -->
+        <a href="#" onclick="openAppOrFallback('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')" target="_blank">Ещё больше о нас в Instagram</a>
+
         <br><br>
-        <!-- 💬 Ссылка на Telegram -->
-        <a href="https://t.me/ArtOptyma_bot " target="_blank" style="color: #00afff; text-decoration: none;">💬 Запишитесь через нашего Ai-ассистента в Telegram 24/7</a>
+
+        <!-- Умная ссылка на Telegram -->
+        <a href="#" onclick="openAppOrFallback('tg://resolve?domain=ArtOptyma_bot', 'https://t.me/ArtOptyma_bot ')" target="_blank" style="color: #00afff; text-decoration: none;">💬 Написать в Telegram</a>
     </div>
-</footer> 
+</footer>
+
+<script>
+function openAppOrFallback(appUrl, webUrl) {
+    const now = Date.now();
+    const timeout = 1000; // Время ожидания открытия приложения
+
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = appUrl;
+    document.body.appendChild(iframe);
+
+    setTimeout(() => {
+        if (Date.now() - now < timeout + 100) {
+            // Возможно, не удалось открыть приложение
+            window.location.href = webUrl;
+        }
+        document.body.removeChild(iframe);
+    }, timeout);
+}
+</script>
 </body>
 </html>
