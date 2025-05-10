@@ -15,6 +15,9 @@
     <meta property="og:url" content="https://viik1980.github.io/viik1980.github.io/ ">
     <meta property="og:type" content="website">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,6 +81,11 @@
         .social a:hover {
             text-decoration: underline;
         }
+
+        /* Стили для иконок */
+        .social a i {
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
@@ -118,10 +126,14 @@
         Контакты: +375 44 55 22 770 | График работы: пн-пт с 9:00-18:00 | г. Солигорск
         <div class="social">
             <!-- Умная ссылка на Instagram -->
-            <a href="#" onclick="openSocial('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')">Ещё больше о нас в Instagram</a>
+            <a href="#" onclick="openSocial('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')">
+                <i class="fab fa-instagram"></i> Ещё больше о нас в Instagram
+            </a>
 
             <!-- Умная ссылка на Telegram -->
-            <a href="#" onclick="openSocial('tg://resolve?domain=ArtOptyma_bot', 'https://t.me/ArtOptyma_bot ')">💬 Наш Ai-ассистент в Telegram 24/7</a>
+            <a href="#" onclick="openSocial('tg://resolve?domain=ArtOptyma_bot', 'https://t.me/ArtOptyma_bot ')">
+                <i class="fab fa-telegram-plane"></i> 💬 Наш Ai-ассистент в Telegram 24/7
+            </a>
         </div>
     </footer>
 
