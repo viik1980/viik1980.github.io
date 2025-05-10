@@ -68,24 +68,15 @@
             border-top: 5px solid #f39200;
         }
 
-        /* Фиксированная кнопка Telegram */
-        #telegram-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 12px 20px;
-            background-color: #009688;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: transform 0.2s ease;
+        /* Стили для ссылок */
+        .social a {
+            display: inline-block;
+            margin: 5px 0;
+            color: #00afff; /* Единый цвет для обеих ссылок */
+            text-decoration: none;
         }
-        #telegram-btn:hover {
-            transform: scale(1.05);
+        .social a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -127,17 +118,12 @@
         Контакты: +375 44 55 22 770 | График работы: пн-пт с 9:00-18:00 | г. Солигорск
         <div class="social">
             <!-- Умная ссылка на Instagram -->
-            <a href="#" onclick="openAppOrFallback('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')" target="_blank">Ещё больше о нас в Instagram</a>
-
-            <br><br>
+            <a href="#" onclick="openSocial('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')">Ещё больше о нас в Instagram</a>
 
             <!-- Умная ссылка на Telegram -->
-            <a href="#" onclick="openTelegram()" target="_blank" style="color: #00afff; text-decoration: none;">💬 Наш Ai-ассистент в Telegram 24/7</a>
+            <a href="#" onclick="openSocial('tg://resolve?domain=ArtOptyma_bot', 'https://t.me/ArtOptyma_bot ')">💬 Наш Ai-ассистент в Telegram 24/7</a>
         </div>
     </footer>
-
-    <!-- Фиксированная кнопка Telegram -->
-    <button id="telegram-btn" onclick="openTelegram()">💬 Telegram</button>
 
     <script>
         // Проверка устройства
@@ -145,8 +131,8 @@
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
 
-        // Функция для Instagram
-        function openAppOrFallback(appUrl, webUrl) {
+        // Открытие ссылки в зависимости от устройства
+        function openSocial(appUrl, webUrl) {
             if (isMobileDevice()) {
                 const iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
@@ -155,29 +141,9 @@
 
                 setTimeout(() => {
                     window.location.href = webUrl;
-                }, 2000);
+                }, 1500);
             } else {
                 window.open(webUrl, '_blank');
-            }
-        }
-
-        // Функция для Telegram
-        function openTelegram() {
-            const telegramUsername = 'ArtOptyma_bot';
-            const appLink = `tg://resolve?domain=${telegramUsername}`;
-            const webLink = `https://t.me/ ${telegramUsername}`;
-
-            if (isMobileDevice()) {
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = appLink;
-                document.body.appendChild(iframe);
-
-                setTimeout(() => {
-                    window.location.href = webLink;
-                }, 2000);
-            } else {
-                window.open(webLink, '_blank');
             }
         }
     </script>
