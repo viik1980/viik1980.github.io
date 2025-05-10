@@ -7,12 +7,14 @@
     <meta name="description" content="Качественный кузовной ремонт, покраска, антикор и восстановление геометрии. АртОптима – надёжный сервис в г.Солигорске.">
     <meta name="keywords" content="кузовной ремонт Солигорск, покраска авто, автосервис, антикор, АртОптима">
     <meta name="robots" content="index, follow">
-    <!-- 🔥 Open Graph для красивого отображения в мессенджерах и соцсетях -->
+
+    <!-- Open Graph -->
     <meta property="og:title" content="АртОптима – Кузовной ремонт в Солигорске">
     <meta property="og:description" content="Профессиональный кузовной ремонт, покраска, антикор. Работаем со страховками.">
     <meta property="og:image" content="https://raw.githubusercontent.com/viik1980/viik1980.github.io/main/color.png ">
     <meta property="og:url" content="https://viik1980.github.io/viik1980.github.io/ ">
     <meta property="og:type" content="website">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,27 +67,48 @@
             margin-top: 20px;
             border-top: 5px solid #f39200;
         }
+
+        /* Фиксированная кнопка Telegram */
+        #telegram-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.2s ease;
+        }
+        #telegram-btn:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
-    <header>
-        ООО "АртОптима" 
-    </header>
+
+    <header>ООО "АртОптима"</header>
+
     <div class="content">
         <h2>Наши услуги</h2>
         <ul>
             <li>Кузовной ремонт в Солигорске</li>
             <li>Профессиональная подготовка и покраска легковых автомобилей и мотоциклов</li>
-            <li>Антикоррозийная обработка </li>
+            <li>Антикоррозийная обработка</li>
             <li>Восстановление геометрии</li>
             <li>Полировка</li>
             <li>Работаем со страховыми компаниями</li>
         </ul>
+
         <h2>Примеры наших работ</h2>
         <li>Покраска и полировка авто</li>
         <img src="https://raw.githubusercontent.com/viik1980/viik1980.github.io/main/color.png " alt="Окрашенный и отполированный автомобиль">
         <li>До ремонта</li>
-        <img src="https://raw.githubusercontent.com/viik1980/viik1980.github.io/main/Before.png " alt="Ремонт кузова до ">
+        <img src="https://raw.githubusercontent.com/viik1980/viik1980.github.io/main/Before.png " alt="Ремонт кузова до">
         <li>После ремонта</li>
         <img src="https://raw.githubusercontent.com/viik1980/viik1980.github.io/main/After.png " alt="Ремонт кузова после">
         <h2>Почему выбирают нас?</h2>
@@ -99,37 +122,65 @@
             <p>🔥 <b>Авто любят чистоту и красоту — а мы это гарантируем!</b> Давайте сделаем ваш автомобиль идеальным вместе! 🚗✨</p>
         </div>
     </div>
-<footer>
-    Контакты: +375 44 55 22 770 | График работы: пн-пт с 9:00-18:00 | г. Солигорск
-    <div class="social">
-        <!-- Умная ссылка на Instagram -->
-        <a href="#" onclick="openAppOrFallback('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')" target="_blank">Ещё больше о нас в Instagram</a>
 
-        <br><br>
+    <footer>
+        Контакты: +375 44 55 22 770 | График работы: пн-пт с 9:00-18:00 | г. Солигорск
+        <div class="social">
+            <!-- Умная ссылка на Instagram -->
+            <a href="#" onclick="openAppOrFallback('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')" target="_blank">Ещё больше о нас в Instagram</a>
 
-        <!-- Умная ссылка на Telegram -->
-        <a href="#" onclick="openAppOrFallback('tg://resolve?domain=ArtOptyma_bot', 'https://t.me/ArtOptyma_bot ')" target="_blank" style="color: #00afff; text-decoration: none;">💬 Наш Ai-ассистент в Telegram 24/7</a>
-    </div>
-</footer>
+            <br><br>
 
-<script>
-function openAppOrFallback(appUrl, webUrl) {
-    const now = Date.now();
-    const timeout = 1000; // Время ожидания открытия приложения
+            <!-- Умная ссылка на Telegram -->
+            <a href="#" onclick="openTelegram()" target="_blank" style="color: #00afff; text-decoration: none;">💬 Наш Ai-ассистент в Telegram 24/7</a>
+        </div>
+    </footer>
 
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = appUrl;
-    document.body.appendChild(iframe);
+    <!-- Фиксированная кнопка Telegram -->
+    <button id="telegram-btn" onclick="openTelegram()">💬 Telegram</button>
 
-    setTimeout(() => {
-        if (Date.now() - now < timeout + 100) {
-            // Возможно, не удалось открыть приложение
-            window.location.href = webUrl;
+    <script>
+        // Проверка устройства
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
-        document.body.removeChild(iframe);
-    }, timeout);
-}
-</script>
+
+        // Функция для Instagram
+        function openAppOrFallback(appUrl, webUrl) {
+            if (isMobileDevice()) {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = appUrl;
+                document.body.appendChild(iframe);
+
+                setTimeout(() => {
+                    window.location.href = webUrl;
+                }, 2000);
+            } else {
+                window.open(webUrl, '_blank');
+            }
+        }
+
+        // Функция для Telegram
+        function openTelegram() {
+            const telegramUsername = 'ArtOptyma_bot';
+            const appLink = `tg://resolve?domain=${telegramUsername}`;
+            const webLink = `https://t.me/ ${telegramUsername}`;
+
+            if (isMobileDevice()) {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = appLink;
+                document.body.appendChild(iframe);
+
+                setTimeout(() => {
+                    window.location.href = webLink;
+                }, 2000);
+            } else {
+                window.open(webLink, '_blank');
+            }
+        }
+    </script>
+
 </body>
 </html>
