@@ -153,15 +153,20 @@
         // Открытие ссылки в зависимости от устройства
         function openSocial(appUrl, webUrl) {
             if (isMobileDevice()) {
+                // Создаём iframe для попытки открытия приложения
                 const iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
                 iframe.src = appUrl;
                 document.body.appendChild(iframe);
 
+                // Ждём 2 секунды, чтобы проверить, открылось ли приложение
                 setTimeout(() => {
-                    window.location.href = webUrl;
-                }, 1500);
+                    document.body.removeChild(iframe);
+                }, 2000);
+
+                // Больше ничего не делаем, чтобы не перенаправлять на веб-ссылку
             } else {
+                // Десктоп — сразу в браузер
                 window.open(webUrl, '_blank');
             }
         }
