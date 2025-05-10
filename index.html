@@ -102,62 +102,64 @@
             <p>🔥 <b>Авто любят чистоту и красоту — а мы это гарантируем!</b> Давайте сделаем ваш автомобиль идеальным вместе! 🚗✨</p>
         </div>
     </div>
+<footer>
+    Контакты: +375 44 55 22 770 | График работы: пн-пт с 9:00-18:00 | г. Солигорск
+    <div class="social">
+        <!-- Умная ссылка на Instagram -->
+        <a href="#" onclick="openAppOrFallback('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')" target="_blank">Ещё больше о нас в Instagram</a>
 
-    <footer>
-        Контакты: +375 44 55 22 770 | График работы: пн-пт с 9:00-18:00 | г. Солигорск
-        <div class="social">
-            <!-- Умная ссылка на Instagram -->
-            <a href="#" onclick="openAppOrFallback('instagram://user?username=artoptima1', 'https://www.instagram.com/artoptima1?idsh=cXlzMpZ28xemZx&utm_source=qr ')" target="_blank">Ещё больше о нас в Instagram</a>
+        <br><br>
 
-            <br><br>
+        <!-- Умная ссылка на Telegram -->
+        <a href="#" onclick="openTelegram()" target="_blank" style="color: #00afff; text-decoration: none;">💬 Наш Ai-ассистент в Telegram 24/7</a>
+    </div>
+</footer>
 
-            <!-- Умная ссылка на Telegram -->
-            <a href="#" onclick="openTelegram()" target="_blank" style="color: #00afff; text-decoration: none;">💬 Написать в Telegram</a>
-        </div>
-    </footer>
+<script>
+// Проверка устройства
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
-    <script>
-        // Проверка устройства
-        function isMobileDevice() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
+// Функция для Instagram
+function openAppOrFallback(appUrl, webUrl) {
+    if (isMobileDevice()) {
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = appUrl;
+        document.body.appendChild(iframe);
 
-        // Функция для Instagram
-        function openAppOrFallback(appUrl, webUrl) {
-            if (isMobileDevice()) {
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = appUrl;
-                document.body.appendChild(iframe);
+        setTimeout(() => {
+            window.location.href = webUrl;
+        }, 2000);
+    } else {
+        window.open(webUrl, '_blank');
+    }
+}
 
-                setTimeout(() => {
-                    window.location.href = webUrl;
-                }, 2000);
-            } else {
-                window.open(webUrl, '_blank');
-            }
-        }
+// Функция для Telegram
+function openTelegram() {
+    const telegramUsername = 'ArtOptyma_bot';
+    const appLink = `tg://resolve?domain=${telegramUsername}`;
+    const webLink = `https://t.me/ ${telegramUsername}`;
 
-        // Функция для Telegram
-        function openTelegram() {
-            const telegramUsername = 'ArtOptyma_bot';
-            const appLink = `tg://resolve?domain=${telegramUsername}`;
-            const webLink = `https://t.me/ ${telegramUsername}`;
+    if (isMobileDevice()) {
+        // Мобильное устройство — попытка открыть приложение
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = appLink;
+        document.body.appendChild(iframe);
 
-            if (isMobileDevice()) {
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = appLink;
-                document.body.appendChild(iframe);
-
-                setTimeout(() => {
-                    window.location.href = webLink;
-                }, 2000);
-            } else {
-                window.open(webLink, '_blank');
-            }
-        }
-    </script>
+        setTimeout(() => {
+            window.location.href = webLink;
+        }, 2000);
+    } else {
+        // Десктоп — сразу в браузер
+        window.open(webLink, '_blank');
+    }
+}
+</script>
+    
 
 </body>
 </html>
